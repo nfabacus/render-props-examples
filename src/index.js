@@ -26,7 +26,7 @@ function App() {
   return (
     <div className="App">
       <h1>React Render Props Examples</h1>
-      <list>
+      <ul>
         <li>
           Example 1: Cleanest Example?
           <AlertOnClick bgColor="black" render={Button} />
@@ -52,7 +52,7 @@ function App() {
             render={({ onClick }) => <a onClick={onClick}>Link button</a>}
           />
         </li>
-      </list>
+      </ul>
     </div>
   );
 }
