@@ -26,22 +26,33 @@ function App() {
   return (
     <div className="App">
       <h1>React Render Props Examples</h1>
-      <AlertOnClick bgColor="black" render={Button} />
-      <AlertOnClick
-        bgColor="yellow"
-        render={props => (
-          <button
-            style={{ color: props.color, backgroundColor: props.bgColor }}
-            onClick={() => alert("Hello, world!")}
-          >
-            Click Me!
-          </button>
-        )}
-      />
-      <AlertOnClick
-        bgColor="yellow"
-        render={({ onClick }) => <a onClick={onClick}>Link button</a>}
-      />
+      <list>
+        <li>
+          Example 1: Cleanest Example?
+          <AlertOnClick bgColor="black" render={Button} />
+        </li>
+        <li>
+          Example 2: You can also pass a functional component like this.
+          <AlertOnClick
+            bgColor="yellow"
+            render={props => (
+              <button
+                style={{ color: props.color, backgroundColor: props.bgColor }}
+                onClick={() => alert("Hello, world!")}
+              >
+                Click Me!
+              </button>
+            )}
+          />
+        </li>
+        <li>
+          Example 3: You can pass anything.
+          <AlertOnClick
+            bgColor="yellow"
+            render={({ onClick }) => <a onClick={onClick}>Link button</a>}
+          />
+        </li>
+      </list>
     </div>
   );
 }
