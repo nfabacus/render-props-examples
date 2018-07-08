@@ -1,0 +1,50 @@
+import React from "react";
+import ReactDOM from "react-dom";
+
+import "./styles.css";
+
+const Button = props => (
+  <button
+    style={{ color: props.color, backgroundColor: props.bgColor }}
+    onClick={props.onClick}
+  >
+    Click Me!
+  </button>
+);
+
+class AlertOnClick extends React.Component {
+  onClick = () => alert("Hello, world!");
+
+  render() {
+    const color = "green";
+    const Render = this.props.render;
+    return <Render color={color} {...this.props} onClick={this.onClick} />;
+  }
+}
+
+function App() {
+  return (
+    <div className="App">
+      <h1>React Render Props Examples</h1>
+      <AlertOnClick bgColor="black" render={Button} />
+      <AlertOnClick
+        bgColor="yellow"
+        render={props => (
+          <button
+            style={{ color: props.color, backgroundColor: props.bgColor }}
+            onClick={() => alert("Hello, world!")}
+          >
+            Click Me!
+          </button>
+        )}
+      />
+      <AlertOnClick
+        bgColor="yellow"
+        render={({ onClick }) => <a onClick={onClick}>Link button</a>}
+      />
+    </div>
+  );
+}
+
+const rootElement = document.getElementById("root");
+ReactDOM.render(<App />, rootElement);
